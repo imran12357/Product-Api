@@ -6,4 +6,10 @@ const add =(data)=>{
     return newproduct.save()
 }
 
-module.exports ={add}
+const getproducts =()=>{
+    const projection ={__v:0}
+    const filter ={};
+    return productmodel.find(filter,projection)
+}
+
+module.exports ={add,getproducts}
