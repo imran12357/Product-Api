@@ -22,4 +22,14 @@ const Products =async(req,res)=>{
         res.status(500).send('ineternal server error')
     }
 }
-module.exports = { add,Products }
+const updateproduct =async(req,res)=>{
+    try{
+        const id =req.params.id
+        await productrepository.updateproducts(id,req.body)
+        res.status(201).send()
+    }catch{
+        res.status(500)
+        res.send('invalid server error')
+    }
+}
+module.exports = { add,Products,updateproduct }
