@@ -15,9 +15,20 @@ const add = async (req, res) => {
 
 const Products =async(req,res)=>{
     try{
-        const products =await productrepository.getproducts()
+        const pageindex =+req.params.page;
+        const pagesize =+req.params.size;
+        const totalproducts = await productrepository.productscount()
+        const totalpages =Math.ceil(totalproducts/pagesize)
+        const products =await productrepository.getproducts(pageindex,pagesize)
+        const response ={
+            data:products,
+            metadata:{
+                totalproducts,
+                totalpages
+            }
+        }
         res.status(200);
-        res.json(products)
+        res.json(response)
     }catch(e){
         res.status(500).send('ineternal server error')
     }
@@ -32,4 +43,9 @@ const updateproduct =async(req,res)=>{
         res.send('invalid server error')
     }
 }
-module.exports = { add,Products,updateproduct }
+const getproductbyid =(req,res)=>{
+    productrepository.getproductsbyid(req.params.id)
+        .then(product=>res.status(201).json(product))
+        .catch(err=>res.status(402).send("internal server error"))
+}
+module.exports = { add,Products,updateproduct,getproductbyid}

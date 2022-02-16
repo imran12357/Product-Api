@@ -1,6 +1,7 @@
 const mongoose =require('mongoose')
 
 const productmodel =mongoose.model('product',{
+    id:Number,
     brand:String,
     price:Number,
     instock:Boolean,
