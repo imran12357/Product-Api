@@ -15,11 +15,12 @@ const add = async (req, res) => {
 
 const Products =async(req,res)=>{
     try{
-        const pageindex =+req.params.page;
-        const pagesize =+req.params.size;
-        const totalproducts = await productrepository.productscount()
+        const pageindex =+req.params.page || 1;
+        const pagesize =+req.params.size || 10;
+        const brand =req.query.brand || ""
+        const totalproducts = await productrepository.productscount(brand)
         const totalpages =Math.ceil(totalproducts/pagesize)
-        const products =await productrepository.getproducts(pageindex,pagesize)
+        const products =await productrepository.getproducts(pageindex,pagesize,brand)
         const response ={
             data:products,
             metadata:{

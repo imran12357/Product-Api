@@ -8,5 +8,6 @@ router.post('/',productctrl.add)
 router.put('/:id',productctrl.updateproduct)
 router.get('/:id',productctrl.getproductbyid)
 router.get('/page/:page/size/:size',productctrl.Products)
+router.get('/',productctrl.Products)
 
 module.exports =router

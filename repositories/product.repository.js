@@ -17,16 +17,18 @@ const updateproducts=(id,data)=>{
         }
     })
 }
-const getproducts =(pageindex,pagesize)=>{
+const getproducts =(pageindex,pagesize,brand)=>{
     const projection ={__v:0,_id:0,createdat:0,updatedat:0}
-    const filter ={};
+    const filter ={}
     const skipproducts =(pageindex-1)*pagesize
+    if(brand)filter.brand =brand
     return productmodel.find(filter,projection)
         .skip(skipproducts)
         .limit(pagesize)
 }
-const productscount =()=>{
-    return productmodel.count()
+const productscount =(brand)=>{
+    const filter ={brand}
+    return productmodel.count(filter)
 }
 
 const getproductsbyid =(id)=>{
