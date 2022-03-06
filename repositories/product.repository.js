@@ -7,9 +7,9 @@ const add =(data)=>{
 }
 const updateproducts=(id,data)=>{
     const {brand,price,instock}=data;
-    return productmodel.updateOne({id},{
+    return productmodel.updateOne({_id:id},{
         $set:{
-            
+            _id:productmodel._id,
             brand,
             price,
             instock,

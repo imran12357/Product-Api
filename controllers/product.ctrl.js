@@ -39,7 +39,8 @@ const updateproduct =async(req,res)=>{
         const id =req.params.id
         await productrepository.updateproducts(id,req.body)
         res.status(201).send()
-    }catch{
+    }catch(e){
+        console.log(e)
         res.status(500)
         res.send('invalid server error')
     }
@@ -48,5 +49,9 @@ const getproductbyid =(req,res)=>{
     productrepository.getproductsbyid(req.params.id)
         .then(product=>res.status(201).json(product))
         .catch(err=>res.status(402).send("internal server error"))
+}
+
+const signup =(req,res)=>{
+    
 }
 module.exports = { add,Products,updateproduct,getproductbyid}
