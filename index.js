@@ -5,7 +5,7 @@ const defaultrouter =require('./routes/default.route')
 const config =require("./configs/index");
 const productrouter =require('./routes/product.route')
 const bodyParser = require('body-parser');
-const port =3000
+const port = process.env.PORT || 3000;
 app.listen(port ,()=>{
     console.log(`server is running on port${port}`)
 })
