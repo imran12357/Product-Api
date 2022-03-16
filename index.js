@@ -7,7 +7,7 @@ const productrouter =require('./routes/product.route')
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 app.listen(port ,()=>{
-    console.log(`server is running on port${port}`)
+    console.log(`server is running on port  ${port}`)
 })
 app.use(bodyParser.json())
 mongoose.connect(config.dbconstr)

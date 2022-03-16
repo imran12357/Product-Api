@@ -54,4 +54,5 @@ const getproductbyid =(req,res)=>{
 const signup =(req,res)=>{
     
 }
+
 module.exports = { add,Products,updateproduct,getproductbyid}
